@@ -1,58 +1,38 @@
-//  DEFINING CONSTANTS
+/**
+ * 1. State - count
+ * 2. Action - increment, decrement, reset
+ * 3. Reducer
+ * 4. store
+ */
+
+const { createStore } = require("redux");
+
+// CONSTANTS
 const INCREMENT = "INCREMENT";
 const DECREMENT = "DECREMENT";
-const ADD_USER = "ADD_USER";
+const RESET = "RESET";
 
 // state
-const initialCounterState = {
-  count: 0,
-};
-const initialUsersState = {
-  users: [{ name: "Bayazid" }],
+const initialState = {
+  counter: 0,
 };
 
-// action - object: type, payload
+// action
 
-const incrementCounter = () => {
+const incrementCounterAction = () => {
   return {
     type: INCREMENT,
   };
 };
 
-const decrementCounter = () => {
+const decrementCounterAction = () => {
   return {
     type: DECREMENT,
   };
 };
 
-const addUser = () => {
+const resetCounterAction = () => {
   return {
-    type: ADD_USER,
-    payload: { name: "Shakil" },
+    type: RESET,
   };
 };
-
-// create reducer for counter
-
-const decrementCounter = (state = initialCounterState, action) {
-  switch (action.type) {
-    case INCREMENT:
-      return {
-        ...state,
-        count: state.count - 1
-      }
-    case DECREMENT:
-      return {
-        ...state,
-        count: state.count - 1
-      }
-  
-    default:
-      state;
-  }
-}
-
-// 1. state
-// 2. dispatch action
-// 3. reducer (will work based on action type)
-// 4. store
