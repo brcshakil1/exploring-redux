@@ -36,3 +36,42 @@ const resetCounterAction = () => {
     type: RESET,
   };
 };
+
+//  create Reducer
+
+const counterReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case INCREMENT:
+      return {
+        ...state,
+        counter: state.counter + 1,
+      };
+    case DECREMENT:
+      return {
+        ...state,
+        counter: state.counter - 1,
+      };
+    case RESET:
+      return {
+        ...state,
+        counter: 0,
+      };
+    default:
+      state;
+  }
+};
+
+// store - getState(), dispatch(), subscribe()
+
+const store = createStore(counterReducer);
+
+store.subscribe(() => {
+  console.log(store.getState());
+});
+
+store.dispatch(incrementCounterAction());
+store.dispatch(incrementCounterAction());
+store.dispatch(incrementCounterAction());
+store.dispatch(resetCounterAction());
+store.dispatch(decrementCounterAction());
+store.dispatch(resetCounterAction());
